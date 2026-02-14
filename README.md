@@ -3,7 +3,8 @@ Production-style airline analytics platform simulating a real-world aviation int
 
 ## Architecture Overview
 
-<img width="1536" height="960" alt="architecture" src="https://github.com/user-attachments/assets/a3140ab6-8f2a-477d-bdf1-47ce5e3b8f1e" />
+<img width="1536" height="980" alt="architecture" src="https://github.com/user-attachments/assets/5ce19235-2a91-460f-b8b5-892493af3589" />
+
 
 # Data Sourcing
  - Extracted interstate and intrastate flight market data from the U.S. DOT Bureau of Transportation Statistics (TranStats) of ~ 10 GB Data
