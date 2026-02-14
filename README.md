@@ -8,13 +8,34 @@ Production-style airline analytics platform simulating a real-world aviation int
 # Data Sourcing
  - Extracted interstate and intrastate flight market data from the U.S. DOT Bureau of Transportation Statistics (TranStats) of ~ 10 GB Data
  - Simulated enterprise data sources by distributing datasets across:
+   * Cloudflare R2
+   * Amazon S3
+   * Azure Blob Storage
+   * MongoDB
+   * Azure blob
+ - Stored datasets in compressed (GZIP) format to optimize storage footprint
 
-Cloudflare R2
+# Ingestion & Landing (Bronze Layer)
 
-Amazon S3
+- Built Azure Data Factory pipelines to ingest data from multiple cloud sources
+- Landed raw datasets into a structured Bronze layer
+- Preserved source schema and added ingestion metadata
+- Designed the landing layer to simulate a production staging environment
 
-Azure Blob Storage
+# Transformation & Enrichment (Silver Layer)
 
-MongoDB
+- Used Azure Databricks to implement Medallion Architecture (Bronze → Silver → Gold)
+- Standardized and cleansed datasets
+- Engineered derived metrics:
+  * Total Flights
+  * Total Passengers
+  * Average Revenue
+  * Fare per Mile
+- Applied Delta Lake optimizations including partitioning and VACUUM for storage efficiency
 
-Stored datasets in compressed (GZIP) format to optimize storage footprint
+# Aggregation & Modeling (Gold Layer)
+- Performed route-level and carrier-level aggregations to reduce BI compute overhead
+- Designed and built:
+   * Fact Route table
+   * Fact Carrier table
+   * Structured Gold layer as an analytics-ready Lakehouse serving layer
